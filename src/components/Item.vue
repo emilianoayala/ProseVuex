@@ -1,33 +1,35 @@
 <template>
 	<div class="item">
-		<p>{{ nombre }}</p>
-		<b-img class="imagen-a" :src="imagen" alt="Image" thumbnail></b-img>
-		<p>${{ precio }}</p>
+		<b-img class="imagen-a" :src="imagen" alt="Image"></b-img>
+		<h3>{{ nombre }}</h3>
+		<h3>${{ precio }}</h3>
 		<div class="checkout">
 			<b-button
-				@click="accionAgregar({nombre, precio, imagen})"
+				class="itemButton"
+				@click="accionAgregar({ nombre, precio, imagen })"
 				variant="primary"
 				v-b-tooltip.hover
 				title="Añadir a Carrito"
 				v-if="!checkout"
 			>
-				<b-icon icon="cart-plus"></b-icon>
+				<b-icon class="carrito-icon" icon="cart-plus"></b-icon>
 			</b-button>
 			<b-button
+				class="itemButton"
 				@click="accionComprar({ nombre, precio, imagen })"
 				variant="success"
 				v-b-tooltip.hover
 				title="Comprar"
 				v-if="!checkout"
 			>
-				<b-icon icon="cart-check"></b-icon>
+				<b-icon class="carrito-icon" icon="cart-check"></b-icon>
 			</b-button>
 		</div>
 	</div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex';
 export default {
 	name: 'ItemVue',
 	// data() {
@@ -43,9 +45,9 @@ export default {
 		productos: Array,
 		checkout: Boolean,
 	},
-	methods:{
-		...mapActions(['accionAgregar', 'accionComprar'])
-	}
+	methods: {
+		...mapActions(['accionAgregar', 'accionComprar']),
+	},
 };
 </script>
 
@@ -53,19 +55,18 @@ export default {
 .item {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
-	width: 200px;
-	height: 250px;
+	width: 350px;
+	height: 500px;
 	margin-top: 10px;
 	border: solid 1px;
-	padding: 20px;
-	border-radius: 20px;
+	border-radius: 15px;
 }
 
 .imagen-a {
-	width: 110px;
-	height: 110px;
+	width: 90%;
+	height: 60%;
 	object-fit: contain;
 }
 
@@ -73,4 +74,14 @@ export default {
 	display: flex;
 	gap: 5px;
 }
+
+.itemButton {
+	height: 60px;
+	width: 60px;
+}
+
+.carrito-icon {
+	font-size: 30px !important;
+}
+
 </style>

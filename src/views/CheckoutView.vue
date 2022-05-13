@@ -1,8 +1,9 @@
 <template>
 	<div class="container">
-		<h1>CHECKOUT</h1>
-		<div v-if="productos.length <= 1">
+		<h2>CHECKOUT</h2>
+		<div class="checkout" v-if="productos.length <= 1">
 			<Item
+				class="checkout"
 				v-for="(item, index) in productos"
 				:key="index"
 				:imagen="item.imagen"
@@ -18,27 +19,23 @@
 				${{ item.precio }}
 			</h3>
 		</h1>
-		<b-button variant="success">Continuar compra</b-button>
+		<b-button class="boton" variant="success">Continuar compra</b-button>
 	</div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex';
 import Item from '../components/Item.vue';
 
 export default {
 	name: 'Checkout',
-	
+
 	components: {
 		Item,
 	},
 	computed: {
-		...mapState(['productos'])
-	}
-	
-	// mounted() {
-	// 	this.objects = JSON.parse(localStorage.getItem('productos-vue')); // Antes de montar la app creo una variable en el local storage
-	// },
+		...mapState(['productos']),
+	},
 };
 </script>
 
@@ -49,9 +46,14 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	border: 1px solid green;
-	height: 380px;
-	width: 340px;
-	gap: 10px;
+	height: fit-content;
+	width: fit-content;
+	gap: 15px;
 	padding: 10px;
+}
+
+.checkout {
+	height: 330px;
+	width: 300px;
 }
 </style>

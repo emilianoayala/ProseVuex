@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="containerPrincipal">
 		<div class="carrito">
 			<div class="titulo">
 				<h1>Products</h1>
@@ -76,25 +76,20 @@ h1 {
 }
 .products {
 	display: flex;
-	max-width: 730px;
-	max-height: 520px;
-	overflow-y: scroll;
+	max-width: 1600px;
 	flex-wrap: wrap;
-	width: 100%;
 	align-items: center;
 	gap: 30px;
 	margin-top: 20px;
-	border: 4px solid brown;
 	border-radius: 10px;
 	justify-content: center;
 	margin-bottom: 50px;
 }
 
-.container {
+.containerPrincipal {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: fit-content;
 }
 
 .carrito {
