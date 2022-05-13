@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<h2>CHECKOUT</h2>
-		<div class="checkout" v-if="productos.length <= 1">
+		<div class="checkout" v-if="productos.length === 1">
 			<Item
 				class="checkout"
 				v-for="(item, index) in productos"
@@ -13,12 +13,15 @@
 			/>
 		</div>
 
-		<h1 v-else>
+		<h1 v-else-if="productos!=0">
 			<h3 v-for="(item, index) in productos" :key="index">
 				{{ item.nombre }}
 				${{ item.precio }}
 			</h3>
 		</h1>
+
+		<h1 v-else>No hay items</h1>
+
 		<b-button class="boton" variant="success">Continuar compra</b-button>
 	</div>
 </template>
