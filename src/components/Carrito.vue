@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import { mapState, mapActions } from 'vuex';
 export default {
 	name: 'carrito',
 	// data() {
@@ -85,11 +85,15 @@ export default {
 	// 	// 	default: [],
 	// 	// },
 	// },
-	computed:{
-		...mapState(['productos'])
+	computed: {
+		...mapState(['productos']),
 	},
 	methods: {
-		...mapActions(['accionVaciar','accionEliminar','accionMontarCarrito']),
+		...mapActions([
+			'accionVaciar',
+			'accionEliminar',
+			'accionMontarCarrito',
+		]),
 		contar(nombre) {
 			const nombresProductos = this.productos.map(
 				(producto) => producto.nombre
@@ -119,12 +123,11 @@ export default {
 	// 	},
 	// },
 	mounted() {
-		accionMontarCarrito()
+		this.accionMontarCarrito();
 	},
-	// watch: {
-	// 	productos(value) {
-	// 		localStorage.getItem('productos-vue');
-	// 	},
+
+	// created() {
+	// 	this.accionMontarCarrito();
 	// },
 };
 </script>
