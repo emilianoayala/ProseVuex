@@ -28,11 +28,17 @@
 						v-for="({ nombre, precio, imagen }, index) in productos"
 						:key="index"
 					>
-						<p v-if="contar(nombre) > 1">
+						<div v-if="contar(nombre) > 1">
+							<img
+								class="imagen-a"
+								:src="imagen"
+								alt="Image"
+								thumbnail
+							/>
 							{{ contar(nombre) }} * {{ nombre }} = ${{
 								precio * contar(nombre)
 							}}
-						</p>
+						</div>
 						<div class="item" v-else>
 							<img
 								class="imagen-a"
