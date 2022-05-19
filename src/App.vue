@@ -38,8 +38,8 @@ nav {
 	padding: 30px;
 	display: flex;
 	justify-content: center;
-	align-items: baseline;
-	gap: 17px;
+	align-items: center !important;
+	gap: 15px;
 }
 
 nav a {

@@ -2,12 +2,11 @@
 	<div class="item">
 		<b-img class="imagen-a" :src="imagen" alt="Image"></b-img>
 		<h3>{{ nombre }}</h3>
-		<h3>${{ precio }}</h3>
+		<h4>${{ precio }}</h4>
 		<div class="checkout">
 			<b-button
-				class="itemButton"
+				class="addButton"
 				@click="accionAgregar({ nombre, precio, imagen })"
-				variant="primary"
 				v-b-tooltip.hover
 				title="Añadir a Carrito"
 				v-if="!checkout"
@@ -15,9 +14,8 @@
 				<b-icon class="carrito-icon" icon="cart-plus"></b-icon>
 			</b-button>
 			<b-button
-				class="itemButton"
+				class="buyButton"
 				@click="accionComprar({ nombre, precio, imagen })"
-				variant="success"
 				v-b-tooltip.hover
 				title="Comprar"
 				v-if="!checkout"
@@ -55,18 +53,18 @@ export default {
 .item {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
-	width: 350px;
-	height: 500px;
-	margin-top: 10px;
+	width: 300px;
+	height: 450px;
+	padding: 10px;
 	border: solid 1px;
-	border-radius: 15px;
+	border-radius: 10px;
 }
 
 .imagen-a {
 	width: 90%;
-	height: 60%;
+	height: 65%;
 	object-fit: contain;
 }
 
@@ -75,13 +73,21 @@ export default {
 	gap: 5px;
 }
 
-.itemButton {
-	height: 60px;
-	width: 60px;
+.buyButton {
+	height: 45px;
+	width: 50px;
+	background: #42b983;
+	border: none;
+}
+
+.addButton {
+	height: 45px;
+	width: 50px;
+	background: #4283b9;
+	border: none;
 }
 
 .carrito-icon {
-	font-size: 30px !important;
+	font-size: 25px !important;
 }
-
 </style>

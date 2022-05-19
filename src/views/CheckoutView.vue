@@ -1,9 +1,9 @@
 <template>
 	<div class="container">
-		<h2>CHECKOUT</h2>
-		<div class="checkout" v-if="productos.length === 1">
+		<div v-if="productos.length === 1">
+			<h3>CHECKOUT</h3>
 			<Item
-				class="checkout"
+				class="item"
 				v-for="(item, index) in productos"
 				:key="index"
 				:imagen="item.imagen"
@@ -11,18 +11,25 @@
 				:precio="item.precio"
 				:checkout="true"
 			/>
+
+			<b-button class="boton" variant="success"
+				>Continuar compra</b-button
+			>
 		</div>
 
-		<h1 v-else-if="productos!=0">
+		<div v-else-if="productos != 0">
+			<h3>CHECKOUT</h3>
 			<h3 v-for="(item, index) in productos" :key="index">
 				{{ item.nombre }}
 				${{ item.precio }}
 			</h3>
-		</h1>
+
+			<b-button class="boton" variant="success"
+				>Continuar compra</b-button
+			>
+		</div>
 
 		<h1 v-else>No hay items</h1>
-
-		<b-button class="boton" variant="success">Continuar compra</b-button>
 	</div>
 </template>
 
@@ -49,14 +56,14 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	border: 1px solid green;
+	padding: 10px;
 	height: fit-content;
 	width: fit-content;
-	gap: 15px;
-	padding: 10px;
 }
 
-.checkout {
-	height: 330px;
-	width: 300px;
+.item {
+	height: 300px;
+	width: 250px;
+	border: none !important;
 }
 </style>

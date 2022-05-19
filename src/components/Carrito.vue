@@ -6,8 +6,8 @@
 		title="Click para ver mi carrito"
 	>
 		<b-icon class="carrito-icon" icon="cart"></b-icon>
-		<h3>:</h3>
-		<h3>{{ $store.state.productos.length }}</h3>
+		<h4>:</h4>
+		<h4>{{ $store.state.productos.length }}</h4>
 
 		<b-modal id="carrito-mod" title="Mi Carrito" scrollable>
 			<div class="my-modal" v-if="$store.state.productos.length > 0">
@@ -15,10 +15,10 @@
 					Cantidad de productos: {{ $store.state.productos.length }}
 
 					<b-button
+						class="emptyButton"
 						@click="accionVaciar"
 						v-b-tooltip.hover
 						title="Vaciar carrito"
-						variant="danger"
 						>☒</b-button
 					>
 				</div>
@@ -50,7 +50,7 @@
 						</div>
 
 						<b-button
-							variant="danger"
+							class="deleteButton"
 							@click="accionEliminar(index)"
 						>
 							<b-icon icon="cart-x-fill"></b-icon>
@@ -145,16 +145,13 @@ export default {
 
 .carrito {
 	display: flex !important;
+	align-items: stretch !important;
 	color: white;
-	background-color: #42b983;
-	justify-content: space-evenly !important;
-	align-items: baseline !important;
+	background: #19c58c;
+	padding: 5px;
+	border-radius: 3px;
+	height: 40px;
 	gap: 5px;
-	border: 1px solid white;
-	width: fit-content;
-	height: fit-content;
-	padding: 6px;
-	border-radius: 5px;
 }
 
 li {
@@ -174,7 +171,6 @@ li {
 	flex-direction: column;
 	align-items: stretch;
 	padding: 15px;
-	/* width: 100%; */
 }
 
 .titulo {
@@ -198,5 +194,15 @@ li {
 .data {
 	display: flex;
 	flex-direction: column;
+}
+
+.deleteButton {
+	background: #e6490b;
+	border: none;
+}
+
+.emptyButton {
+	background: #e6490b;
+	border: none;
 }
 </style>
