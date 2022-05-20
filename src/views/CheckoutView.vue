@@ -29,7 +29,10 @@
 			>
 		</div>
 
-		<h1 v-else>No hay items</h1>
+		<a href="/products" v-else>
+			<h3>No hay items.</h3>
+			<h3>Hay un carrito que llenar.</h3>
+		</a>
 	</div>
 </template>
 

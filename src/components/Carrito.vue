@@ -197,12 +197,12 @@ li {
 }
 
 .deleteButton {
-	background: #e6490b;
+	background: #fc736c;
 	border: none;
 }
 
 .emptyButton {
-	background: #e6490b;
+	background: #fc736c;
 	border: none;
 }
 </style>
