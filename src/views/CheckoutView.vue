@@ -62,6 +62,7 @@ export default {
 	padding: 10px;
 	height: fit-content;
 	width: fit-content;
+	margin-top: 15px;
 }
 
 .item {

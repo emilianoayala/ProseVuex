@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import store from "../store";
+import store from '../store';
 import HomeView from '../views/HomeView.vue';
 import ProductsView from '../views/ProductsView.vue';
 import CheckoutView from '../views/CheckoutView.vue';
@@ -62,14 +62,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
 	if (to.meta.rutaProtegida) {
-	  if (store.getters.usuarioAutenticado) {
-		next();
-	  } else {
-		next("/login");
-	  }
+		if (store.getters.usuarioAutenticado) {
+			next();
+		} else {
+			next('/login');
+		}
 	} else {
-	  next();
+		next();
 	}
-  });
+});
 
 export default router;
