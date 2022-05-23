@@ -7,8 +7,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		productos: [],
+		user: null
 	},
-	getters: {},
+	getters: {
+		usuarioAutenticado(state) {
+			return !!state.user
+		  }
+	},
 	mutations: {
 		agregarCarritox(state, payload) {
 			state.productos = [...state.productos, payload];
@@ -44,6 +49,9 @@ export default new Vuex.Store({
 		montarCarrito(state, payload) {
 			state.productos = payload;
 		},
+		setUser(state, payload){     //Registrar usuario
+			state.user = payload
+		}
 	},
 	actions: {
 		accionAgregar({ commit }, { nombre, precio, imagen }) {
@@ -69,6 +77,64 @@ export default new Vuex.Store({
 
 			localStorage.setItem('productos', JSON.stringify([]));
 		},
+		async registrarUsuario({commit}, usuario){
+			try {
+			  const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCENvHZrXca5GlN-YEJR7VbR-_svYkEp88',{
+				method: 'POST',
+				body: JSON.stringify({
+					email: usuario.email,
+					password: usuario.password,
+					returnSecureToken: true
+				})
+			  })
+			  const userDB = await res.json()
+			  console.log(userDB)
+			  if(userDB.error){
+				console.log(userDB.error)
+				return
+			  }
+			  commit('setUser', userDB)
+			  router.push('/')
+			  localStorage.setItem('usuario', JSON.stringify(userDB))
+			}catch(error) {
+			  console.log(error)
+			}
+		},
+		async loginUsuario({commit}, usuario){
+			console.log(usuario)
+			try {
+			  const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCENvHZrXca5GlN-YEJR7VbR-_svYkEp88', {
+				method: 'POST',
+				body: JSON.stringify({
+				  email: usuario.email,
+				  password: usuario.password,
+				  returnSecureToken: true
+				})
+			  })
+			  const userDB = await res.json()
+			  console.log(userDB)
+			  if(userDB.error){
+				return console.log(userDB.error)
+			  }
+			  commit('setUser', userDB)
+			  router.push('/')
+			  localStorage.setItem('usuario', JSON.stringify(userDB))
+			} catch (error) {
+			  console.log(error)
+			}
+		  },
+		  cerrarSesion({commit}){
+			commit('setUser', null)
+			router.push('/login')
+			localStorage.removeItem('usuario')
+		  },
+		  async cargarLocalStorage({ commit, state }) {
+			if(localStorage.getItem('usuario')){
+			  commit('setUser', JSON.parse(localStorage.getItem('usuario')))
+			} else {
+			  return commit('setUser', null)
+			}
+		}
 	},
 	modules: {},
 });
