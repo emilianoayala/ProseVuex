@@ -64,7 +64,7 @@ export default {
 	padding: 15px;
 	border: solid 1px;
 	border-radius: 10px;
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.3);
 	-webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
@@ -94,7 +94,7 @@ export default {
 	transition: all ease-in-out 0s;
 }
 
-.item:hover .item-imagen{
+.item:hover .item-imagen {
 	opacity: 1;
 	background: rgb(61, 60, 60);
 	-webkit-transition: all ease-in-out 0.3s;
@@ -104,19 +104,33 @@ export default {
 
 .item:hover .ver-mas {
 	opacity: 1;
-	border: solid 1px rgb(61, 60, 60);
+}
+
+.ver-mas:hover{
+	opacity: 1;
+	background-color: #42b983;
+	border: 2px solid #fff !important;
+}
+
+.item-imagen:hover .ver-mas:hover{
+	-webkit-transition: all ease-in-out 0.1s;
+	transition: all ease-in-out 0.1s;
 }
 
 .ver-mas {
-	transition: 0.5s ease;
 	opacity: 0;
+	-webkit-transition: all ease-in-out 0.5s;
+	transition: all ease-in-out 0.5s;
+	display: block;
+	background-color: #4283b9;
+	padding: 5px 10px;
+	border: none;
 	position: absolute;
-	display: flex;
-	text-align: center;
-	background-color: #04aa6d;
-	color: white;
-	font-size: 15px;
-	padding: 10px 10px;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #fff;
+	border-radius: 3px;
+	width: 140px;
 }
 
 .checkout {
