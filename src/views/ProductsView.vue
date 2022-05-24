@@ -2,7 +2,7 @@
 	<div class="containerPrincipal">
 		<div class="carrito">
 			<div class="titulo">
-				<h1>Products</h1>
+				<h1>Productos</h1>
 			</div>
 		</div>
 
@@ -71,7 +71,6 @@ export default {
 
 <style scoped>
 h1 {
-	font-style: oblique;
 	text-decoration: underline;
 }
 .products {

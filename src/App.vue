@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex';
 import NavBar from '../src/components/NavBar.vue';
 import Carrito from '../src/components/Carrito.vue';
 
@@ -20,11 +20,11 @@ export default {
 		Carrito,
 	},
 	methods: {
-      ...mapActions(['cargarLocalStorage'])
-    },
-    created(){
-      this.cargarLocalStorage()
-    }
+		...mapActions(['cargarLocalStorage']),
+	},
+	created() {
+		this.cargarLocalStorage();
+	},
 };
 </script>
 

@@ -1,6 +1,10 @@
 <template>
 	<div class="item">
-		<b-img class="imagen-a" :src="imagen" alt="Image"></b-img>
+		<div class="item-imagen">
+			<img class="imagen-a" :src="imagen" alt="Image" />
+			<button class="ver-mas">ver más</button>
+		</div>
+
 		<h3>{{ nombre }}</h3>
 		<h4>${{ precio }}</h4>
 		<div class="checkout">
@@ -57,15 +61,62 @@ export default {
 	align-items: center;
 	width: 300px;
 	height: 450px;
-	padding: 10px;
+	padding: 15px;
 	border: solid 1px;
 	border-radius: 10px;
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.item-imagen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	height: 280px;
 }
 
 .imagen-a {
-	width: 90%;
-	height: 65%;
+	display: block;
+	width: 100%;
+	height: 100%;
 	object-fit: contain;
+	transition: 0.5s ease;
+}
+
+.item:hover .imagen-a {
+	opacity: 0.5;
+	background: white;
+	-webkit-transition: all ease-in-out 0s;
+	-o-transition: all ease-in-out 0s;
+	transition: all ease-in-out 0s;
+}
+
+.item:hover .item-imagen{
+	opacity: 1;
+	background: rgb(61, 60, 60);
+	-webkit-transition: all ease-in-out 0.3s;
+	-o-transition: all ease-in-out 0.3s;
+	transition: all ease-in-out 0.3s;
+}
+
+.item:hover .ver-mas {
+	opacity: 1;
+	border: solid 1px rgb(61, 60, 60);
+}
+
+.ver-mas {
+	transition: 0.5s ease;
+	opacity: 0;
+	position: absolute;
+	display: flex;
+	text-align: center;
+	background-color: #04aa6d;
+	color: white;
+	font-size: 15px;
+	padding: 10px 10px;
 }
 
 .checkout {
